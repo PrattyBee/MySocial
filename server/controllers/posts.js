@@ -21,9 +21,18 @@ export const createPost = async (req, res) => {
     await newPost.save();
 
     const post = await Post.find();
-
     res.status(201).json(post);
   } catch (error) {
-    res / statis(409).json({ message: error.message });
+    res.status(409).json({ message: error.message });
+  }
+};
+
+/* READ */
+export const getFeedPosts = async (req, res) => {
+  try {
+    const post = await Post.find();
+    res.status(200).json(post);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
   }
 };
