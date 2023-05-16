@@ -9,6 +9,7 @@ import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
 import { error } from "console";
+import { register } from "./controllers/auth.js";
 
 /* CONFIGURATIONS */
 const __filname = fileURLToPath(import.meta.url);
@@ -34,6 +35,9 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage });
+
+/* ROUTES WITH FILE */
+app.post("/auth/register", upload.single("picture"), register);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
