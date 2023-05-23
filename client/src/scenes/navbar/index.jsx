@@ -38,8 +38,15 @@ const Navbar = () => {
   const background = theme.palette.background.default;
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
-
-  const fullName = `${user.firstName} ${user.lastName}`;
+  var fullName = '';
+  if (user !== null) {
+    // Access the 'firstName' property
+    fullName = `${user.firstName} ${user.lastName}`;
+  } else {
+    // Handle the case when 'user' is null
+    fullName = 'Username';
+  }
+  
 
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
@@ -56,7 +63,7 @@ const Navbar = () => {
             },
           }}
         >
-          Sociopedia
+          MySocial
         </Typography>
         {isNonMobileScreens && (
           <FlexBetween
