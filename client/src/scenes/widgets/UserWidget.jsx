@@ -72,11 +72,12 @@ const UserWidget = ({userId, picturePath}) => {
                             }}>
                                 {firstName} {lastName}
                             </Typography>
-                            <Typography color={medium}>{friends.length}</Typography>
+                            <Typography color={medium}></Typography>
                     </Box>
-                    <ManageAccountsOutlined />
+                  
                 </FlexBetween>
-
+                <ManageAccountsOutlined />
+                </FlexBetween>
                 <Divider />
 
                 {/* SECOND ROW */}
@@ -134,7 +135,8 @@ const UserWidget = ({userId, picturePath}) => {
                         <EditOutlined sx={{color: main}} />
                     </FlexBetween>
                 </Box>
-            </FlexBetween>
         </widgetWrapper>
     )
 };
+
+export default UserWidget;
