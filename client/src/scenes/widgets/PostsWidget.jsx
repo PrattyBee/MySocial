@@ -11,7 +11,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
   const getPosts = async () => {
     const response = await fetch("http://localhost:3001/posts", {
       method: "GET",
-      headers: { Authorization: `${token}` },
+      header: { Authorization: `Bearer ${token}` },
     });
 
     const data = await response.json();
@@ -23,7 +23,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
       `http://localhost:3001/posts/${userId}/posts`,
       {
         method: "GET",
-        headers: { Authorization: `${token}` },
+        header: { Authorization: `Bearer ${token}` },
       }
     );
 
@@ -37,7 +37,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
     } else {
       getPosts();
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
@@ -50,19 +50,19 @@ const PostsWidget = ({ userId, isProfile = false }) => {
           description,
           location,
           picturePath,
-          userPicturepath,
+          userPicturePath,
           likes,
           comments,
         }) => (
           <PostWidget
             key={_id}
-            postid={_id}
-            postuserId={userId}
+            postId={_id}
+            postUserId={userId}
             name={`${firstName} ${lastName}`}
             description={description}
             location={location}
             picturePath={picturePath}
-            userPicturepath={userPicturepath}
+            userPicturePath={userPicturePath}
             likes={likes}
             comments={comments}
           />

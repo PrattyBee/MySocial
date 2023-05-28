@@ -13,12 +13,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPost } from "state";
 
 const PostWidget = ({
-  postuserId,
+  postId,
+  postUserId,
   name,
   description,
   location,
   picturePath,
-  userPicturepath,
+  userPicturePath,
   likes,
   comments,
 }) => {
@@ -49,10 +50,10 @@ const PostWidget = ({
   return (
     <WidgetWrapper m="2rem 0">
       <Friend
-        friendId={postuserId}
+        friendId={postUserId}
         name={name}
         subtitle={location}
-        userPicturePath={userPicturepath}
+        userPicturePath={userPicturePath}
       />
       <Typography color={main} sx={{ mt: "1rem" }}>
         {description}
@@ -80,26 +81,27 @@ const PostWidget = ({
           </FlexBetween>
 
           <FlexBetween gap="0.3rem">
-            <IconButton onClick={setIsComments(!isComments)}>
+            <IconButton onClick={() => setIsComments(!isComments)}>
               <ChatBubbleOutlineOutlined />
             </IconButton>
             <Typography>{comments.length}</Typography>
           </FlexBetween>
         </FlexBetween>
+
         <IconButton>
           <ShareOutlined />
         </IconButton>
       </FlexBetween>
       {isComments && (
         <Box mt="0.5rem">
-          {comments.map((comment, i) => {
+          {comments.map((comment, i) => (
             <Box key={`${name}-${i}`}>
               <Divider />
               <Typography sx={{ color: main, m: "0.5rem 0", pl: "1rem" }}>
                 {comment}
               </Typography>
-            </Box>;
-          })}
+            </Box>
+          ))}
           <Divider />
         </Box>
       )}
